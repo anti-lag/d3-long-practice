@@ -4,28 +4,140 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 
 // Practice problems on binary trees
 
-function findMinBST (rootNode) {
-  // Your code here
+function findMinBST(rootNode) {
+  // return leftMost node 
+  // let root = new TreeNode(rootNode)
+  // Tree1.depthFirstTraversal
+  while (rootNode.left)
+  {
+    rootNode = rootNode.left
+  }
+  return rootNode.val
 }
 
 function findMaxBST (rootNode) {
-  // Your code here
+  while (rootNode.right)
+  {
+    rootNode = rootNode.right
+  }
+  return rootNode.val
 }
 
 function findMinBT (rootNode) {
-  // Your code here
+  let min = rootNode.val
+
+  const stack = [rootNode];
+  while (stack.length) {
+    let currentNode = stack.pop();
+    // console.log(currentNode.val);
+    if (currentNode.val < min)
+    {
+      min = currentNode.val
+    }
+    if (currentNode.left) stack.push(currentNode.left);
+    if (currentNode.right) stack.push(currentNode.right);
+  }
+  return min
 }
+  // iterate each node
+  // var check less than infinity or negative infinity
+  // let min = Infinity;
+  // let currentNode = rootNode
+
+  // while (currentNode !== null)
+  // {
+  //   if (min === currentNode.val)
+  //   {
+  //     return min
+  //   }
+  //   if (min < currentNode.val)
+  //   {
+  //     currentNode = currentNode.left
+  //   }
+  //   if (min > currentNode.val)
+  //   {
+  //     min = currentNode.val
+  //   }
+  // } 
+  // while (currentNode !== null)
+  // {
+  //   if (min === currentNode.val)
+  //   {
+  //     return min
+  //   }
+  //   if (min < currentNode.val)
+  //   {
+  //     currentNode = currentNode.right
+  //   }
+  //   if (min > currentNode.val)
+  //   {
+  //     min = currentNode.val
+  //   }
+  // } 
+  // return min
+
+
 
 function findMaxBT (rootNode) {
-  // Your code here
+  let max = rootNode.val
+
+  const stack = [rootNode];
+  while (stack.length) {
+    let currentNode = stack.pop();
+    // console.log(currentNode.val);
+    if (currentNode.val > max)
+    {
+      max = currentNode.val
+    }
+    if (currentNode.left) stack.push(currentNode.left);
+    if (currentNode.right) stack.push(currentNode.right);
+  }
+  return max
 }
 
-function getHeight (rootNode) {
-  // Your code here
+function getHeight (rootNode) 
+{
+  let count = 0, countR = 0;
+
+  while (rootNode.left)
+  {
+    count+=1
+    rootNode = rootNode.left
+  }
+
+  while (rootNode.right)
+  {
+    countR += 1
+    rootNode = rootNode.right
+  }
+
+  if (count >= countR)
+  {
+    return count
+  }
+  else
+  {
+    return countR
+  }
 }
 
 function countNodes (rootNode) {
-  // Your code here
+  let count = 0, countR = 0;
+
+  while (rootNode.left)
+  {
+    count+=1
+    rootNode = rootNode.left
+  }
+
+  while (rootNode.right)
+  {
+    countR += 1
+    rootNode = rootNode.right
+  }
+  console.log(count);
+  console.log(countR)
+  // return count + countR;
 }
 
 function balancedTree (rootNode) {

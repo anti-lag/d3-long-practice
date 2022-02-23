@@ -102,11 +102,15 @@ class BinarySearchTree {
     const stack = [this.root];
     while (stack.length) {
       let currentNode = stack.pop();
-      console.log(currentNode.val);
+      // console.log(currentNode.val);
+      if (stack.length === 1)
+      {
+        console.log(currentNode.val)
+      }
       if (currentNode.left) stack.push(currentNode.left);
       if (currentNode.right) stack.push(currentNode.right);
     }
   }
 }
 
-module.exports = { BinarySearchTree, TreeNode };
+module.exports = {BinarySearchTree, TreeNode};
