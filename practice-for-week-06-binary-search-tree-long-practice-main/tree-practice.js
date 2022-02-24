@@ -95,53 +95,94 @@ function findMaxBT (rootNode) {
   return max
 }
 
-function getHeight (rootNode) 
+function getHeight(rootNode) 
 {
-  let count = 0, countR = 0;
+  if (rootNode === null) return 0 
+  
+  if (!rootNode.left && !rootNode.right)
+  {
+    return 0
+  }
+  return 1 + Math.max(getHeight(rootNode.left), getHeight(rootNode.right))
+  // let count = 0, countR = 0;
 
-  while (rootNode.left)
-  {
-    count+=1
-    rootNode = rootNode.left
-  }
+  // while (rootNode.left)
+  // {
+  //   count+=1
+  //   rootNode = rootNode.left
+  // }
 
-  while (rootNode.right)
-  {
-    countR += 1
-    rootNode = rootNode.right
-  }
+  // while (rootNode.right)
+  // {
+  //   countR += 1
+  //   rootNode = rootNode.right
+  // }
 
-  if (count >= countR)
-  {
-    return count
-  }
-  else
-  {
-    return countR
-  }
+  // if (count >= countR)
+  // {
+  //   return count
+  // }
+  // else
+  // {
+  //   return countR
+  // }
+
 }
 
 function countNodes (rootNode) {
-  let count = 0, countR = 0;
+  // let count = 1, countR = 1;
+  if (rootNode === null) return 0 
 
-  while (rootNode.left)
-  {
-    count+=1
-    rootNode = rootNode.left
-  }
+  return 1 + countNodes(rootNode.left) + countNodes(rootNode.right)
+  // while (rootNode.left)
+  // {
+  //   count+=1
+  //   rootNode = rootNode.left
+  // }
 
-  while (rootNode.right)
-  {
-    countR += 1
-    rootNode = rootNode.right
-  }
-  console.log(count);
-  console.log(countR)
+  // while (rootNode.right)
+  // {
+  //   countR += 1
+  //   rootNode = rootNode.right
+  // }
+
+  // if (count >= countR)
+  // {
   // return count + countR;
+  // }
+  // else
+  // {
+  //   return countR
+  // }
 }
 
 function balancedTree (rootNode) {
-  // Your code here
+//  let leftHeight = getHeight(rootNode.left)
+//  let rightHeight = getHeight(rootNode.right)
+//  let total = 0
+
+// //  console.log(leftHeight)
+// //  console.log(rightHeight)
+// if (leftHeight <= rightHeight)
+// {
+//   total = Math.log(leftHeight) - Math.log (rightHeight)
+// }
+// if(rightHeight <= leftHeight)
+// {
+//   total =  Math.log(rightHeight) - Math.log(leftHeight)
+// }
+
+//  console.log(total)
+//  if (total <= 1) {
+//  return true 
+//  }
+//  else return false
+// if (rootNode === null) return true;
+  
+// return getHeight(rootNode) !== false;
+
+if (getHeight(rootNode.left) === getHeight(rootNode.right)) return true;
+else return false;
 }
 
 function getParentNode (rootNode, target) {
